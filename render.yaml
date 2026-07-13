@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: order-tracker
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: BC_TENANT_ID
+        sync: false
+      - key: BC_CLIENT_ID
+        sync: false
+      - key: BC_CLIENT_SECRET
+        sync: false
+      - key: BC_COMPANY_ID
+        sync: false
+      - key: BC_ENVIRONMENT
+        sync: false
+      - key: BC_RESOURCE
+        sync: false
+      - key: BC_COMPANY_NAME
+        sync: false

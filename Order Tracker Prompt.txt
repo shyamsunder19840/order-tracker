@@ -1,0 +1,64 @@
+PROMPTS:
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+I want a app
+
+api - https://api.businesscentral.dynamics.com/v2.0/a1492249-245b-4a8b-a6e4-ce2d20b36653/Test-Shyam/ODataV4/RequestInformation_GetOrderStatus?company=d2201f64-96ef-ec11-82f8-6045bdae852a
+
+use the below code to fetch data:
+
+import requests
+url = https://api.businesscentral.dynamics.com/v2.0/a1492249-245b-4a8b-a6e4-ce2d20b36653/Test-Shyam/ODataV4/RequestInformation_GetOrderStatus?company=d2201f64-96ef-ec11-82f8-6045bdae852a
+payload = {}
+headers = {
+  'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlUxc1g4WUZIUzdaNlZsN1ZITEl6VGVqYnZqMCIsImtpZCI6IlUxc1g4WUZIUzdaNlZsN1ZITEl6VGVqYnZqMCJ9.eyJhdWQiOiJodHRwczovL2FwaS5idXNpbmVzc2NlbnRyYWwuZHluYW1pY3MuY29tIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvYTE0OTIyNDktMjQ1Yi00YThiLWE2ZTQtY2UyZDIwYjM2NjUzLyIsImlhdCI6MTc3NzM1NzgwMCwibmJmIjoxNzc3MzU3ODAwLCJleHAiOjE3NzczNjMyNDQsImFjciI6IjEiLCJhaW8iOiJBWFFBaS84YkFBQUFualRUckhsSWdkbzRRblRpVEpadDRQazF6WHRjdkVydXlJNVdUdmxqcDY0WGlwVlpLNFAvR3dteTVTbDZ3d2g1S3hJUE9nYkJROVBFYyt2OFBJYmY4RTNwaU5vZ3kvUEd3cGYxbkhBL0ZsYnNoRlBXd3g3NmVIU1lsTEk1U3BlNWM0ZWY2azdmbGtndlZ3Tk01V1ltbmc9PSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI0N2UzZjg4YS1iMGJlLTRkZGYtYmY1Yi00NTZkODU0YmFiYjQiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkRldmVsb3BlciIsImdpdmVuX25hbWUiOiJQcm8iLCJpZHR5cCI6InVzZXIiLCJpcGFkZHIiOiIxNC45OC4yMDkuMTQyIiwibmFtZSI6IlBybyBEZXZlbG9wZXIiLCJvaWQiOiJmYTNkZDQzNy05ZTY3LTQyNWQtODZmZi1iZWFlZDM1MGNjNzYiLCJwdWlkIjoiMTAwMzIwMDBEMUIwNjE3MCIsInJoIjoiMS5BVk1BU1NKSm9Wc2tpMHFtNU00dElMTm1VejN2Ylpsc3MxTkJoZ2VtX1R3QnVKOEFBSHRUQUEuIiwic2NwIjoiRmluYW5jaWFscy5SZWFkV3JpdGUuQWxsIHVzZXJfaW1wZXJzb25hdGlvbiIsInNpZCI6IjAwNDE1NmFhLTU0ZmEtOTNkNS1mYWM0LWY5OGNiMzYzZmQyOCIsInN1YiI6ImxKU1VYVzBiWGlpdmFjNjJzc3hRT2ZiTnFKdkNHODlvTEZxMXJrMXUzNHciLCJ0aWQiOiJhMTQ5MjI0OS0yNDViLTRhOGItYTZlNC1jZTJkMjBiMzY2NTMiLCJ1bmlxdWVfbmFtZSI6InByby5kZXZlbG9wZXJAcHJvYWN0aXZlLmNvLmluIiwidXBuIjoicHJvLmRldmVsb3BlckBwcm9hY3RpdmUuY28uaW4iLCJ1dGkiOiJuTV82NmFGOGkwMjZtUnVDUS1BTUFBIiwidmVyIjoiMS4wIiwid2lkcyI6WyIxMTY0ODU5Ny05MjZjLTRjZjMtOWMzNi1iY2ViYjBiYThkY2MiLCI0NDM2NzE2My1lYmExLTQ0YzMtOThhZi1mNTc4Nzg3OWY5NmEiLCJhOWVhODk5Ni0xMjJmLTRjNzQtOTUyMC04ZWRjZDE5MjgyNmMiLCJiNzlmYmY0ZC0zZWY5LTQ2ODktODE0My03NmIxOTRlODU1MDkiXSwieG1zX2FjdF9mY3QiOiIzIDkiLCJ4bXNfZnRkIjoicWRpalNDNW1oYzdldy10RklSZFBCZjJMTm0zU2xaTElMUnc0ckVJTV93UUJhMjl5WldGemIzVjBhQzFrYzIxeiIsInhtc19pZHJlbCI6IjEgNiIsInhtc19zdWJfZmN0IjoiMyAxOCJ9.XxAPJqTr5DQYszTXXF4s8TTv8D51mf6FNd9D-pZwR1hMMkyPzHk32LaY8KM4ftlSWJlfJMPauVkCe1i10qzjNR7fZbNgKYKMKNybUU6gMtYhIxfARaL5_yWOqJpAt7tJ1TNGGQUz64OPmvypEiOwxEWsWvbIBu7HnK9XD4XES3Y1x0N-kTzwW3JbhezjIGOZGhm8JzbNqlMuyWgXvA1ef9U5lX3Tm4ZGHCYYjOlQXpkriXkTEn3xsobJOLHJnBMKUjpMOFC62LvbSW1im0CWUWYNePVKP5g1n6sneYP6DoRIP6XMjImoMQJEo9en0TDxNRwyTXND0udK3wnG-BqafA'
+}
+response = requests.request("GET", url, headers=headers, data=payload)
+print(response.text)
+
+
+sample data set :
+
+{
+    "@odata.context": "https://api.businesscentral.dynamics.com/v2.0/a1492249-245b-4a8b-a6e4-ce2d20b36653/Test-Shyam/ODataV4/$metadata#Edm.String",
+    "value": "{\"Order Details\":[{\"Customer PO No.\":\"5500589510\",\"Part No\":\"CAB-TA-IN=\",\"Description\":\"India AC Type A Power Cable\",\"Quantity\":\"54\",\"SONo\":\"SOCSFZ262700015\",\"PONo\":\"POCSFZ26270017-M\",\"DeliveryDate\":\"07/09/26\",\"ShipmentNo\":\"Not Created\",\"SalesInvNo\":\"Not Created\",\"GRNNo\":\"Not Created\",\"PurchInvoiceNo\":\"Not Created\",\"PaymentReceivedfromCustomer\":\"\",\"PaidPaymenttoVendor\":\"\"},{\"Customer PO No.\":\"5500589510\",\"Part No\":\"CAB-SPWR-150CM=\",\"Description\":\"Catalyst Stack Power Cable 150 CM Spare\",\"Quantity\":\"27\",\"SONo\":\"SOCSFZ262700015\",\"PONo\":\"POCSFZ26270017-M\",\"DeliveryDate\":\"07/09/26\",\"ShipmentNo\":\"Not Created\",\"SalesInvNo\":\"Not Created\",\"GRNNo\":\"Not Created\",\"PurchInvoiceNo\":\"Not Created\",\"PaymentReceivedfromCustomer\":\"\",\"PaidPaymenttoVendor\":\"\"},{\"Customer PO No.\":\"5500589510\",\"Part No\":\"STACK-T1-1M=\",\"Description\":\"1M Type 1 Stacking Cable\",\"Quantity\":\"27\",\"SONo\":\"SOCSFZ262700015\",\"PONo\":\"POCSFZ26270017-M\",\"DeliveryDate\":\"07/09/26\",\"ShipmentNo\":\"Not Created\",\"SalesInvNo\":\"Not Created\",\"GRNNo\":\"Not Created\",\"PurchInvoiceNo\":\"Not Created\",\"PaymentReceivedfromCustomer\":\"\",\"PaidPaymenttoVendor\":\"\"},{\"Customer PO No.\":\"5500589510\",\"Part No\":\"PWR-C1-1100WAC-P=\",\"Description\":\"1100W AC 80+ platinum Config 1 Power Supply Spare\",\"Quantity\":\"2\",\"SONo\":\"SOCSFZ262700015\",\"PONo\":\"POCSFZ26270017-M\",\"DeliveryDate\":\"07/09/26\",\"ShipmentNo\":\"Not Created\",\"SalesInvNo\":\"Not Created\",\"GRNNo\":\"Not Created\",\"PurchInvoiceNo\":\"Not Created\",\"PaymentReceivedfromCustomer\":\"\",\"PaidPaymenttoVendor\":\"\"},{\"Customer PO No.\":\"5500589510\",\"Part No\":\"CAB-TA-IN\",\"Description\":\"India AC Type A Power Cable\",\"Quantity\":\"2\",\"SONo\":\"SOCSFZ262700015\",\"PONo\":\"POCSFZ26270017-M\",\"DeliveryDate\":\"\",\"ShipmentNo\":\"Not Created\",\"SalesInvNo\":\"Not Created\",\"GRNNo\":\"Not Created\",\"PurchInvoiceNo\":\"Not Created\",\"PaymentReceivedfromCustomer\":\"\",\"PaidPaymenttoVendor\":\"\"}]}"
+}
+
+Remove the '\' from the value output and show these details like in tabular form.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+auto token generation
+
+import requests
+import json
+
+Tenant ID: YOUR_TENANT_ID
+
+Client ID: YOUR_CLIENT_ID
+Client Value: YOUR_CLIENT_SECRET
+
+Company ID: YOUR_COMPANY_ID
+
+tokenendpoint = 'https://login.microsoftonline.com/YOUR_TENANT_ID/oauth2/token' #oauth token endpoint
+
+#build the authorization token request
+tokenpost = {
+    'client_id':clientid,
+    'client_secret':secret,
+    'resource':crmorg,
+    'username':username,
+    'password':userpassword,
+    'grant_type':'password'
+}
+
+tokenres = [requests.post](http://requests.post)(tokenendpoint, data=tokenpost)
+accesstoken = tokenres.json()['access_token']
+print(accesstoken)
+
+I want to create a app to show the progress of sales orders. the user can search based on the 'Customer Order No.'. we want to show details of the sales order (line wise) in tabular form. Line wise all the details comes with the values.
+
+if both the fields 'PaymentReceivedfromCustomer' and 'PaidPaymenttoVendor' have the value like 'Paid' or 'Received' the whole line is complete from the supply chain side.
+
+Please create in Python/Django and ReactJS with Redux.
+
+Give me a fully running code that we can refine.

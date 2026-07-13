@@ -1,0 +1,6 @@
+1> Go to D:\Cloude-Projects\order-tracker\
+2> Double-click Start App.bat
+3> Two server windows open automatically:
+4> Yellow window = Backend (Django)
+5> Blue window = Frontend (Vite)
+6> Browser opens at http://localhost:3001 automatically
