@@ -7,6 +7,7 @@ import ConnectScreen     from './components/ConnectScreen.jsx'
 import TrackerTable      from './components/TrackerTable.jsx'
 import OrderDetailModal  from './components/OrderDetailModal.jsx'
 import SettingsModal     from './components/SettingsModal.jsx'
+import logo              from './assets/logo.png'
 
 export default function App() {
   const dispatch = useDispatch()
@@ -39,7 +40,9 @@ export default function App() {
     <div className="app">
       <header className="app-header">
         <div className="header-inner">
-          <div className="logo-mark">OT</div>
+          <div className="logo-mark">
+            <img src={logo} alt="Proactive" className="logo-img" />
+          </div>
           <div>
             <h1 className="header-title">Sales Order Tracker</h1>
             <p className="header-sub">Business Central · Supply Chain Progress</p>

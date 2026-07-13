@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { connectBC, clearAuthError } from '../store/authSlice.js'
+import logo from '../assets/logo.png'
 
 export default function ConnectScreen() {
   const dispatch              = useDispatch()
@@ -18,7 +19,7 @@ export default function ConnectScreen() {
   return (
     <div className="connect-page">
       <div className="connect-card">
-        <div className="connect-logo">OT</div>
+        <img src={logo} alt="Proactive" className="connect-logo" />
         <h1 className="connect-title">Sales Order Tracker</h1>
         <p className="connect-sub">Sign in with your Business Central account</p>
 
