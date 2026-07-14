@@ -23,6 +23,7 @@ def serve_react(request):
 
 urlpatterns = [
     path('api/', include('orders.urls')),
+    path('api/', include('sales_api.urls')),
 
     # Serve React app for every other path (must be last)
     re_path(r'^(?!api/).*$', serve_react),

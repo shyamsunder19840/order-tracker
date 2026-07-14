@@ -3,11 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { checkStatus, disconnectBC } from './store/authSlice.js'
 import { clearResults } from './store/ordersSlice.js'
 import { setSelectedRow, clearFilters } from './store/trackerSlice.js'
-import ConnectScreen     from './components/ConnectScreen.jsx'
-import TrackerTable      from './components/TrackerTable.jsx'
-import OrderDetailModal  from './components/OrderDetailModal.jsx'
-import SettingsModal     from './components/SettingsModal.jsx'
-import logo              from './assets/logo.png'
+import ConnectScreen      from './components/ConnectScreen.jsx'
+import TrackerTable       from './components/TrackerTable.jsx'
+import OrderDetailModal   from './components/OrderDetailModal.jsx'
+import SettingsModal      from './components/SettingsModal.jsx'
+import SalesDashboardApp  from './sales-dashboard/SalesDashboardApp.jsx'
+import logo               from './assets/logo.png'
+
+const TABS = [
+  { key: 'sales',   label: 'Sales Dashboard' },
+  { key: 'tracker', label: 'Order Tracker' },
+]
 
 export default function App() {
   const dispatch = useDispatch()
@@ -15,6 +21,7 @@ export default function App() {
   const { selectedRow }          = useSelector((s) => s.tracker)
   const { searched }             = useSelector((s) => s.orders)
   const [showSettings, setShowSettings] = useState(false)
+  const [activeTab, setActiveTab]       = useState('sales')
 
   useEffect(() => { dispatch(checkStatus()) }, [dispatch])
 
@@ -43,16 +50,27 @@ export default function App() {
           <div className="logo-mark">
             <img src={logo} alt="Proactive" className="logo-img" />
           </div>
-          <div>
-            <h1 className="header-title">Sales Order Tracker</h1>
-            <p className="header-sub">Business Central · Supply Chain Progress</p>
+
+          <div className="tab-switcher">
+            {TABS.map((tab) => (
+              <button
+                key={tab.key}
+                className={`tab-btn ${activeTab === tab.key ? 'tab-btn-active' : ''}`}
+                onClick={() => setActiveTab(tab.key)}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
-          <button
-            className="btn-settings"
-            onClick={() => setShowSettings(true)}
-            title="App Settings">
-            ⚙
-          </button>
+
+          {activeTab === 'tracker' && (
+            <button
+              className="btn-settings"
+              onClick={() => setShowSettings(true)}
+              title="Order Tracker Settings">
+              ⚙
+            </button>
+          )}
           <button
             className="btn-logout"
             onClick={() => {
@@ -71,13 +89,14 @@ export default function App() {
 
       {showDetail && <OrderDetailModal onClose={handleCloseDetail} />}
 
-      <main className="app-main">
-        <TrackerTable />
-      </main>
-
-      <footer className="app-footer">
-        <p>Connected to Business Central · {new Date().getFullYear()}</p>
-      </footer>
+      <div className="app-main-tabs">
+        <div className={`tab-panel ${activeTab === 'sales' ? '' : 'tab-panel-hidden'}`}>
+          <SalesDashboardApp />
+        </div>
+        <div className={`app-main tab-panel ${activeTab === 'tracker' ? '' : 'tab-panel-hidden'}`}>
+          <TrackerTable />
+        </div>
+      </div>
     </div>
   )
 }

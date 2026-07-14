@@ -26,3 +26,9 @@ services:
         sync: false
       - key: BC_COMPANY_NAME
         sync: false
+      - key: BC_USERNAME
+        sync: false
+      - key: BC_PASSWORD
+        sync: false
+      - key: BC_STATIC_TOKEN
+        sync: false

@@ -34,6 +34,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'orders',
+    # Listed after 'orders' so orders.apps.ready() has already patched the
+    # live settings from bc_config.json before sales_api's cache-warm thread
+    # (its own apps.py ready()) reads them.
+    'sales_api',
 ]
 
 # WhiteNoise must come right after SecurityMiddleware
@@ -94,5 +98,22 @@ BC_ENVIRONMENT   = os.environ.get('BC_ENVIRONMENT', '')
 BC_RESOURCE      = os.environ.get('BC_RESOURCE', 'https://api.businesscentral.dynamics.com')
 BC_COMPANY_NAME  = os.environ.get('BC_COMPANY_NAME', '')
 
-BC_USERNAME = os.environ.get('BC_USERNAME', '')
-BC_PASSWORD = os.environ.get('BC_PASSWORD', '')
+BC_USERNAME     = os.environ.get('BC_USERNAME', '')
+BC_PASSWORD     = os.environ.get('BC_PASSWORD', '')
+BC_STATIC_TOKEN = os.environ.get('BC_STATIC_TOKEN', '')
+
+# ── Sales Dashboard cache ─────────────────────────────────────────────────────
+# File-based so BC tokens/data survive process restarts (sales_api.bc_client).
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': str(DATA_DIR / 'cache'),
+    }
+}
+
+REST_FRAMEWORK = {
+    # JSON only — the browsable API's HTML renderer needs app-dir templates,
+    # which are disabled above (TEMPLATES.APP_DIRS = False), so it 500s if
+    # a browser navigates to an API URL directly with an html Accept header.
+    'DEFAULT_RENDERER_CLASSES': ['rest_framework.renderers.JSONRenderer'],
+}

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 115" role="img" aria-label="Proactive — Enhancing Digital Experience">
+  <defs>
+    <linearGradient id="triGrad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%"   stop-color="#b03aa0"/>
+      <stop offset="100%" stop-color="#6b2d92"/>
+    </linearGradient>
+  </defs>
+
+  <!-- PRO -->
+  <text x="2" y="80"
+    font-family="'Arial Black','Impact','Helvetica Neue',Arial,sans-serif"
+    font-size="82" font-weight="900" fill="#2d2a5e">PRO</text>
+
+  <!-- Triangle replacing "A" — left edge at 190 so it clears the "O" -->
+  <polygon points="218,5  250,82  186,82" fill="url(#triGrad)"/>
+
+  <!-- Person icon (white) inside triangle -->
+  <circle cx="218" cy="29" r="7.5" fill="#fff"/>
+  <path d="M209,45 Q218,39 227,45 L230,73 Q218,79 206,73 Z" fill="#fff"/>
+
+  <!-- CTIVE -->
+  <text x="254" y="80"
+    font-family="'Arial Black','Impact','Helvetica Neue',Arial,sans-serif"
+    font-size="82" font-weight="900" fill="#2d2a5e">CTIVE</text>
+
+  <!-- ™ superscript -->
+  <text x="514" y="16"
+    font-family="'Arial Black','Helvetica Neue',Arial,sans-serif"
+    font-size="22" font-weight="900" fill="#2d2a5e">™</text>
+
+  <!-- Tagline -->
+  <text x="265" y="108"
+    font-family="'Arial Black','Helvetica Neue',Arial,sans-serif"
+    font-size="17" font-weight="900" fill="#1a1a2e"
+    text-anchor="middle" letter-spacing="0.3">Enhancing Digital Experience</text>
+</svg>

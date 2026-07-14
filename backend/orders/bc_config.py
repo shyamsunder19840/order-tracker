@@ -30,7 +30,14 @@ KEYS = [
     'BC_ENVIRONMENT',
     'BC_COMPANY_ID',
     'BC_COMPANY_NAME',
+    'BC_USERNAME',
+    'BC_PASSWORD',
+    'BC_STATIC_TOKEN',
 ]
+
+# Keys masked when sent to the browser, and left untouched on save if the
+# incoming value is still the masked placeholder (i.e. the user didn't edit it).
+SECRET_KEYS = {'BC_CLIENT_SECRET', 'BC_PASSWORD', 'BC_STATIC_TOKEN'}
 
 
 def _defaults():
@@ -59,7 +66,7 @@ def apply_to_django(cfg: dict):
 def save(data: dict) -> dict:
     """
     Persist config to JSON file and apply to live Django settings.
-    If BC_CLIENT_SECRET is masked (starts with '•'), the existing secret is kept.
+    If a secret key is still masked (starts with '•'), the existing value is kept.
     """
     existing = load()
     to_save = {}
@@ -67,8 +74,8 @@ def save(data: dict) -> dict:
         if k not in data:
             continue
         v = data[k]
-        if k == 'BC_CLIENT_SECRET' and str(v).startswith('•'):
-            v = existing.get('BC_CLIENT_SECRET', '')
+        if k in SECRET_KEYS and str(v).startswith('•'):
+            v = existing.get(k, '')
         to_save[k] = v
 
     with open(_CONFIG_FILE, 'w', encoding='utf-8') as f:
@@ -79,9 +86,10 @@ def save(data: dict) -> dict:
 
 
 def masked_load() -> dict:
-    """Return config safe to send to the browser — secret is masked."""
+    """Return config safe to send to the browser — secrets are masked."""
     cfg = load()
-    secret = cfg.get('BC_CLIENT_SECRET', '')
-    if secret:
-        cfg['BC_CLIENT_SECRET'] = '•' * max(0, len(secret) - 4) + secret[-4:]
+    for k in SECRET_KEYS:
+        secret = cfg.get(k, '')
+        if secret:
+            cfg[k] = '•' * max(0, len(secret) - 4) + secret[-4:]
     return cfg
