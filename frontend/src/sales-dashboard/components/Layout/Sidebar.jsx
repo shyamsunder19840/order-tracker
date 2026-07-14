@@ -59,7 +59,6 @@ const S = {
     textAlign: 'center',
     gap: 4,
   },
-  logoImg: { width: '75%', maxWidth: 155, display: 'block', marginLeft: 12 },
   logoTitle: { fontSize: 11, color: '#1e1b4b', fontWeight: 700, letterSpacing: 0.3, marginTop: 2 },
   logoSub: { fontSize: 10, color: '#8b5cf6', fontWeight: 600, letterSpacing: 0.5 },
 
@@ -124,7 +123,6 @@ export default function Sidebar() {
   return (
     <aside style={S.sidebar(open)}>
       <div style={S.logo}>
-        <img src="/logo.png" alt="Proactive" style={S.logoImg} />
         <div style={S.logoTitle}>Customer Sales Summary</div>
         <div style={S.logoSub}>Business Central · Live Data</div>
       </div>
