@@ -6,7 +6,7 @@ import logo from '../assets/logo.png'
 export default function ConnectScreen() {
   const dispatch              = useDispatch()
   const { connecting, error } = useSelector((s) => s.auth)
-  const [username, setUsername] = useState('shyam.sunder@proactive.co.in')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPw,   setShowPw]   = useState(false)
 
@@ -20,7 +20,7 @@ export default function ConnectScreen() {
     <div className="connect-page">
       <div className="connect-card">
         <img src={logo} alt="Proactive" className="connect-logo" />
-        <h1 className="connect-title">Sales Order Tracker</h1>
+        <h1 className="connect-title">Sales &amp; Order Suite</h1>
         <p className="connect-sub">Sign in with your Business Central account</p>
 
         <form className="connect-form" onSubmit={handleSubmit}>
@@ -33,6 +33,7 @@ export default function ConnectScreen() {
               onChange={(e) => { setUsername(e.target.value); dispatch(clearAuthError()) }}
               placeholder="user@company.com"
               autoComplete="username"
+              autoFocus
             />
           </div>
 
@@ -46,7 +47,6 @@ export default function ConnectScreen() {
                 onChange={(e) => { setPassword(e.target.value); dispatch(clearAuthError()) }}
                 placeholder="Business Central password"
                 autoComplete="current-password"
-                autoFocus
               />
               <button
                 type="button"
